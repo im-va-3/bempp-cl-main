@@ -32,7 +32,11 @@ jobs:
       - name: compare Dockerfile with old Dockerfile
         id: diff
         run: |
-            if diff Dockerfile Dockerfile.old > /dev/null; then
+            if [ "${{ github.repository }}" != "bempp/bempp-cl" ]; then
+                # Forks cannot publish the project's Docker images. Reuse the
+                # public main image instead.
+                echo "changed=no" >> $GITHUB_OUTPUT
+            elif diff Dockerfile Dockerfile.old > /dev/null; then
                 echo "changed=no" >> $GITHUB_OUTPUT
             else
                 echo "changed=yes" >> $GITHUB_OUTPUT

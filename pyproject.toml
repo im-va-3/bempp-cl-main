@@ -36,6 +36,7 @@ include = ["bempp_cl*", "*.npz", "*.cl", "*.h"]
 line-length = 120
 indent-width = 4
 lint.ignore = ["E203", "E731"]
+lint.select = ["E4", "E7", "E9", "F"]
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401"]
