@@ -7,9 +7,8 @@ import bempp_cl.api
 import pytest
 
 
-@pytest.mark.usefixtures("two_element_grid", "helpers")
 @pytest.fixture
-def two_element_geometries(two_element_grid):
+def two_element_geometries(two_element_grid, helpers):
     """Return geometries of two element grid."""
 
     geometries = [elem.geometry for elem in two_element_grid.entity_iterator(0)]
