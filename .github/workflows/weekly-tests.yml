@@ -8,6 +8,7 @@ jobs:
   build-and-publish-docker-fenicsx-release:
     name: Build testing docker image with FEniCSx release
     runs-on: ubuntu-latest
+    if: github.repository == 'bempp/bempp-cl'
     strategy:
       matrix:
         fenics-version: [ "main" ]
