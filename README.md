@@ -45,3 +45,21 @@ Questions about the library and its use can be asked on the [Bempp Discourse](ht
 
 ## Licence
 Bempp-cl is licensed under an MIT licence. Full text of the licence can be found [here](LICENSE.md).
+
+
+## Step-by-step user guide
+
+1. **Create an isolated Python environment** using a Python version supported by this checkout, then install Bempp-cl from the repository root with <code>python -m pip install .</code>. Follow [INSTALLATION.md](INSTALLATION.md) if you need OpenCL drivers, optional packages, or a Numba-only configuration.
+2. **Run a first example.** From the repository root, run <code>python examples/laplace/laplace_interior_dirichlet.py</code>. This solves a Laplace boundary-value problem on a sphere; the other [examples](examples/) cover mixed boundary conditions, Helmholtz, and Maxwell problems.
+3. **Build the boundary-element model.** Load or generate a surface mesh, choose a function space and boundary data, then construct integral operators for the physical problem. Combine the operators into the boundary equation and solve it with a supported linear-algebra backend.
+4. **Inspect the solution.** Evaluate the resulting grid function on the boundary or in the domain, compute the requested field or potential, and plot or export it. Check mesh resolution, boundary conditions, and solver residuals before interpreting the result.
+5. **Choose the compute backend.** Bempp-cl uses JIT-compiled OpenCL kernels when a working OpenCL driver is available and can use Numba routines otherwise. Follow the installation guide to configure a backend and diagnose driver or compilation problems.
+6. **Extend the formulation.** Reuse grid, space, operator, and solver building blocks for another supported kernel or boundary-value problem; keep mesh and units consistent.
+
+### Functionality map
+
+- Standard boundary integral kernels for Laplace, Helmholtz, modified Helmholtz, and Maxwell problems.
+- Mesh/grid handling, function spaces, grid functions, boundary operators, blocked operator systems, boundary conditions, and iterative/direct solver interfaces.
+- JIT execution through OpenCL or Numba, with examples for electrostatics, acoustics, and electromagnetics.
+- Use [docs](docs/), [examples](examples/), the [Bempp Handbook](https://bempp.com/handbook), and the [Python API reference](https://bempp-cl.readthedocs.io/en/latest/) for the complete operator/function reference and advanced formulations.
+
